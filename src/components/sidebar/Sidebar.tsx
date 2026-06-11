@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, BookOpen, Compass, Trophy, BarChart2,
   Settings, ChevronLeft, ChevronRight, Zap, GraduationCap,
-  LucideIcon, Sun, Moon,
+  LucideIcon,
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -31,24 +31,14 @@ const NAV_ITEMS = [
 export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     if (savedTheme) {
-      setTheme(savedTheme);
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
       document.documentElement.classList.add("dark");
     }
   }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  };
 
   useEffect(() => {
     // Auto-collapse sidebar on tablet screens (<1024px)
@@ -163,27 +153,7 @@ export function Sidebar() {
           })}
         </div>
 
-        {/* Theme toggle */}
-        <div className="px-2 mb-2">
-          <button
-            onClick={toggleTheme}
-            className="w-full flex items-center gap-3 px-3 py-2 border border-border-subtle hover:border-violet-500/20 bg-bg-surface hover:bg-bg-elevated text-text-secondary hover:text-text-primary rounded-xl transition-all duration-200"
-            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          >
-            <div className="flex items-center justify-center shrink-0 w-5 h-5">
-              {theme === "dark" ? (
-                <Sun size={16} className="text-amber-500" />
-              ) : (
-                <Moon size={16} className="text-violet-500" />
-              )}
-            </div>
-            {!collapsed && (
-              <span className="text-xs font-medium whitespace-nowrap">
-                {theme === "dark" ? "Light Mode" : "Dark Mode"}
-              </span>
-            )}
-          </button>
-        </div>
+        {/* Theme toggle handled in Settings page */}
 
         {/* Streak badge */}
         <div className="px-2 pb-4">
