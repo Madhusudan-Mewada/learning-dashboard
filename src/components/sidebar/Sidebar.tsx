@@ -185,7 +185,7 @@ export function Sidebar() {
       </motion.nav>
 
       {/* Mobile Bottom Nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around bg-bg-surface backdrop-blur-xl border-t border-border-subtle px-1 py-1.5">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around bg-bg-surface backdrop-blur-xl border-t border-border-subtle px-1 py-3">
         {NAV_ITEMS.map((item) => {
           const Icon = iconMap[item.icon];
           const isActive = pathname === item.href;
