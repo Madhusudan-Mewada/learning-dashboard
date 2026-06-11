@@ -215,30 +215,30 @@ export function Sidebar() {
       </motion.nav>
 
       {/* Mobile Bottom Nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around bg-bg-surface/90 backdrop-blur-xl border-t border-border-subtle px-2 py-2">
-        {NAV_ITEMS.slice(0, 5).map((item) => {
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around bg-bg-surface backdrop-blur-xl border-t border-border-subtle px-1 py-1.5">
+        {NAV_ITEMS.map((item) => {
           const Icon = iconMap[item.icon];
           const isActive = pathname === item.href;
 
           return (
-            <Link key={item.id} href={item.href}>
+            <Link key={item.id} href={item.href} className="flex-1">
               <motion.div
-                whileTap={{ scale: 0.9 }}
-                className="relative flex flex-col items-center gap-1 px-3 py-1"
+                whileTap={{ scale: 0.95 }}
+                className="relative flex flex-col items-center gap-1.5 py-1 px-1 text-center"
               >
                 {isActive && (
                   <motion.div
                     layoutId="mobile-nav-active"
-                    className="absolute inset-0 rounded-xl bg-violet-500/15"
+                    className="absolute inset-x-1 inset-y-0 rounded-xl bg-violet-500/10"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
                 <Icon
-                  size={20}
+                  size={18}
                   className={`relative z-10 ${isActive ? "text-violet-400" : "text-text-muted"}`}
                 />
-                <span className={`relative z-10 text-[10px] ${isActive ? "text-violet-400" : "text-text-muted"}`}>
-                  {item.label.split(" ")[0]}
+                <span className={`relative z-10 text-[9px] font-medium tracking-wide uppercase transition-colors duration-200 ${isActive ? "text-violet-400" : "text-text-secondary"}`}>
+                  {item.id === "courses" ? "Courses" : item.label.split(" ")[0]}
                 </span>
               </motion.div>
             </Link>

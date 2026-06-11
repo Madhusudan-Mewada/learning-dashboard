@@ -18,7 +18,7 @@ export function HeroTile({ stats, index = 0 }: HeroTileProps) {
   ];
 
   return (
-    <BentoTile index={index} glowColor="violet" className="col-span-2 md:col-span-2 p-6 md:p-8">
+    <BentoTile index={index} glowColor="violet" className="col-span-1 md:col-span-2 p-6 md:p-8">
       {/* Background gradient mesh */}
       <div className="absolute inset-0 bg-gradient-radial from-violet-600/8 via-transparent to-transparent" />
       <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent" />
